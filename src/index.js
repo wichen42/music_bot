@@ -38,14 +38,25 @@ client.on('interactionCreate', (interaction) => {
         interaction.reply('BONG')
     };
 
-    if (interaction.commandName === 'roll20') {
-        interaction.reply(`${random.integer(1,20)}`);
+    if (interaction.commandName === 'coin-flip') {
+        const flipped_value = random.integer(1,100);
+
+        if (flipped_value < 51) {
+            interaction.reply("Heads");
+        } else {
+            interaction.reply("Tails");
+        }
     };
 
     if (interaction.commandName === 'add') {
         const num1 = interaction.options.get('first-number').value;
         const num2 = interaction.options.get('second-number').value;
         interaction.reply(`The sum is: ${num1 + num2}`);
+    };
+
+    if (interaction.commandName === 'roll') {
+        const dice_type = interaction.options.get('dice_type').value;
+        interaction.reply(`You picked up a d${dice_type} and rolled: ${random.integer(1,dice_type)}`);
     };
 
 })

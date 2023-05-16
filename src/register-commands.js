@@ -11,8 +11,8 @@ const commands = [
         description: 'Replies with Bing.',
     },
     {
-        name: 'roll20',
-        description: 'Generate a random number from 1-20.',
+        name: 'coin-flip',
+        description: 'Flip a coin: Heads or Tails',
     },
     {
         name: 'add',
@@ -31,7 +31,45 @@ const commands = [
                 required: true,
             },
         ]
-    }
+    },
+    {
+        name: 'roll',
+        description: 'Rolls X-number sided dice',
+        options: [
+            {
+                name: 'dice_type',
+                description: 'Options for dice',
+                type: ApplicationCommandOptionType.Number,
+                choices: [
+                    {
+                        name: 'd4',
+                        value: 4
+                    },
+                    {
+                        name: 'd6',
+                        value: 6
+                    },
+                    {
+                        name: 'd8',
+                        value: 8
+                    },
+                    {
+                        name: 'd10',
+                        value: 10
+                    },
+                    {
+                        name: 'd12',
+                        value: 12
+                    },
+                    {
+                        name: 'd20',
+                        value: 20
+                    },
+                ],
+            }
+        ]
+    },
+    
 ];
 
 const rest = new REST({version: '10'}).setToken(process.env.DISCORD_TOKEN);
