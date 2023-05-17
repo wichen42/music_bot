@@ -55,63 +55,37 @@ client.on('interactionCreate', async (interaction) => {
     };
 
     if (interaction.commandName === 'streaming-sites') {
-        const category = interaction.options.getString('site');
-    
-        if (!category) {
-          await interaction.reply('Please select a category.');
-          return;
-        }
-    
+        const site_type = interaction.options.get('site').value;
+
+        console.log(interaction.options.get('site'));
+
         let siteName = '';
-        let siteLink = '';
-    
-        switch (category) {
-          case 'animesuge':
-            const animeSite = interaction.options.getString('animesuge');
-            if (animeSite === 'animesuge') {
-              siteName = 'AnimeSuge';
-              siteLink = 'https://animesuge.to/home';
-            } else if (animeSite === 'zoro') {
-              siteName = 'Zoro.to';
-              siteLink = 'https://zoro.to/home';
-            } else {
-              await interaction.reply('Invalid anime streaming site option');
-              return;
-            }
-            break;
-    
-          case 'zoro':
-            const Site = interaction.options.getString('zoro');
-            if (ite === 'showboxmovies') {
-              siteName = 'ShowboxMovies';
-              siteLink = 'https://showboxmovies.net/';
-            } else if (movieSite === '123chill') {
-              siteName = '123Chill';
-              siteLink = 'https://123chill.to/';
-            } else {
-              await interaction.reply('Invalid movie streaming site option');
-              return;
-            }
-            break;
-    
-          case 'tv':
-            const tvSite = interaction.options.getString('showboxmovies_tv');
-            if (tvSite === 'showboxmovies_tv') {
-              siteName = 'ShowboxMovies (TV)';
-              siteLink = 'https://showboxmovies.net/tv/';
-            } else {
-              await interaction.reply('Invalid TV streaming site option');
-              return;
-            }
-            break;
-    
-          default:
-            await interaction.reply('Invalid category');
-            return;
-        }
-    
-        await interaction.reply(`Here is the link to ${siteName}: ${siteLink}`);
-      }
+        let siteURL = '';
+
+        switch (site_type) {
+            case 'animesuge':
+                siteName = 'AnimeSuge',
+                siteURL = 'https://animesuge.to/home'
+            
+            case 'zoro':
+                siteName = 'Zoro.to',
+                siteURL = 'https://zoro.to/home'
+
+            case 'showboxmovies':
+                siteName = 'ShowBoxMovies'
+                siteURL = 'https://www.showboxmovies.net/'
+            
+            case '123chill':
+                siteName = '123Chill.to',
+                siteURL = 'https://123chill.to/'
+
+            case 'showboxmovies_tv':
+                siteName = 'ShowBoxMovies TV',
+                siteURL = 'https://www.showboxmovies.net/tv-show'
+        };
+
+        await interaction.reply(`${siteName}: ${siteURL}`);
+    };
 
 })
 

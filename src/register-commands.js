@@ -25,7 +25,7 @@ const commands = [
             required: true,
             choices: [
               {
-                name: 'animeSuge',
+                name: 'animesuge',
                 value: 'animesuge'
               },
               {
