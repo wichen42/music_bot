@@ -4,34 +4,50 @@ require('dotenv').config();
 const commands = [
     {
         name: 'bing',
-        description: 'Replies with Bing.',
+        description: 'Replies with Bing',
     },
     {
         name: 'bong',
-        description: 'Replies with Bing.',
+        description: 'Replies with Bing',
     },
     {
         name: 'coin-flip',
         description: 'Flip a coin: Heads or Tails',
     },
     {
-        name: 'add',
-        description: 'Adds two numbers',
+        name: 'streaming-sites',
+        description: 'Links to currently used streaming sites',
         options: [
-            {
-                name: 'first-number',
-                description: 'The first number',
-                type: ApplicationCommandOptionType.Number,
-                required: true,
-            },
-            {
-                name: 'second-number',
-                description: 'The second number',
-                type: ApplicationCommandOptionType.Number,
-                required: true,
-            },
+          {
+            name: 'site',
+            description: 'Select a streaming site',
+            type: ApplicationCommandOptionType.String,
+            required: true,
+            choices: [
+              {
+                name: 'animeSuge',
+                value: 'animesuge'
+              },
+              {
+                name: 'zoro',
+                value: 'zoro'
+              },
+              {
+                name: 'showboxmovies',
+                value: 'showboxmovies'
+              },
+              {
+                name: '123chill',
+                value: '123chill'
+              },
+              {
+                name: 'showboxmovies_tv',
+                value: 'showboxmovies_tv'
+              }
+            ]
+          }
         ]
-    },
+      },
     {
         name: 'roll',
         description: 'Rolls X-number sided dice',
