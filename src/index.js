@@ -57,8 +57,6 @@ client.on('interactionCreate', async (interaction) => {
     if (interaction.commandName === 'streaming-sites') {
         const site_type = interaction.options.get('site').value;
 
-        console.log(interaction.options.get('site'));
-
         let siteName = '';
         let siteURL = '';
 
@@ -66,25 +64,33 @@ client.on('interactionCreate', async (interaction) => {
             case 'animesuge':
                 siteName = 'AnimeSuge',
                 siteURL = 'https://animesuge.to/home'
+                break;
             
             case 'zoro':
                 siteName = 'Zoro.to',
                 siteURL = 'https://zoro.to/home'
+                break;
 
             case 'showboxmovies':
                 siteName = 'ShowBoxMovies'
                 siteURL = 'https://www.showboxmovies.net/'
+                break;
             
             case '123chill':
                 siteName = '123Chill.to',
                 siteURL = 'https://123chill.to/'
+                break;
 
             case 'showboxmovies_tv':
                 siteName = 'ShowBoxMovies TV',
                 siteURL = 'https://www.showboxmovies.net/tv-show'
+                break;
         };
 
         await interaction.reply(`${siteName}: ${siteURL}`);
+
+        siteName = ''
+        siteURL = ''
     };
 
 })
