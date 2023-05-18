@@ -1,5 +1,7 @@
 require('dotenv').config();
 const { Client, IntentsBitField} = require('discord.js');
+const { createAudioResource, joinVoiceChannel, NoSubscriberBehavior, VoiceConnectionStatus } = require('@discordjs/voice');
+const scdl = require('soundcloud-downloader');
 const { Random } = require("random-js");
 
 const random = new Random();
