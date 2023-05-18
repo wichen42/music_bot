@@ -56,6 +56,10 @@ client.on('interactionCreate', async (interaction) => {
         await interaction.reply(`You picked up a d${dice_type} and rolled: ${random.integer(1,dice_type)}`);
     };
 
+    if (interaction.commandName === 'sc') {
+        
+    };
+
     if (interaction.commandName === 'streaming-sites') {
         const site_type = interaction.options.get('site').value;
 

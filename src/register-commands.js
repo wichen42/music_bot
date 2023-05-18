@@ -15,6 +15,23 @@ const commands = [
         description: 'Flip a coin: Heads or Tails',
     },
     {
+        name: 'sc',
+        description: 'Play music from SoundCloud',
+        options: [
+            {
+                name: 'song-title',
+                description: 'Title of song',
+                type: ApplicationCommandOptionType.String,
+                required: true
+            },
+            {
+                name: 'song-author',
+                description: 'Author of song',
+                type: ApplicationCommandOptionType.String
+            }
+        ]
+    },
+    {
         name: 'streaming-sites',
         description: 'Links to currently used streaming sites',
         options: [
