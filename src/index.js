@@ -57,7 +57,10 @@ client.on('interactionCreate', async (interaction) => {
     };
 
     if (interaction.commandName === 'sc') {
-        
+        const title = interaction.options.get('song-title').value;
+        const author = interaction.options.get('song-author')?.value;
+
+        await interaction.reply(`Title: ${title} Author: ${author}`);
     };
 
     if (interaction.commandName === 'streaming-sites') {
