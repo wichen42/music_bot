@@ -57,8 +57,20 @@ client.on('interactionCreate', async (interaction) => {
     };
 
     if (interaction.commandName === 'sc') {
+        const channel = message.member?.voice.channel;
+
+        if (!channel) return message.reply('You must be in a voice channel');
+
         const title = interaction.options.get('song-title').value;
         const author = interaction.options.get('song-author')?.value;
+
+        try {
+            const searchResults = await scdl.search(title);
+            console.log(searchResults);
+        } catch (error) {
+            console.error('Error occured while searching SoundCloud', error);
+            return message.reply('An Error occured while searching SoundCloud, check the logs.')
+        }
 
         await interaction.reply(`Title: ${title} Author: ${author}`);
     };
