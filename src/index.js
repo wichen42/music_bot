@@ -57,19 +57,28 @@ client.on('interactionCreate', async (interaction) => {
     };
 
     if (interaction.commandName === 'sc') {
-        const channel = message.member?.voice.channel;
+        // const channel = interaction.member?.voice.channel;
+        const channelID = '1107801180261863526'
+        
+        // if (!channel) return interaction.reply('You must be in a voice channel');
+        
+        // const title = interaction.options.get('song-title').value;
+        // const author = interaction.options.get('song-author')?.value;
 
-        if (!channel) return message.reply('You must be in a voice channel');
-
-        const title = interaction.options.get('song-title').value;
-        const author = interaction.options.get('song-author')?.value;
+        const track_url = "https://soundcloud.com/zomboy/archangel";
 
         try {
-            const searchResults = await scdl.search(title);
-            console.log(searchResults);
+            const channel = client.channels.cache.get(channelID);
+            console.log(channel);
+            channel.join().then(connection => {
+                scdl.download(track_url, process.env.SOUNDCLOUD_CLIENT_ID)
+                .then(stream => {
+                    connection.play(stream)
+                })
+            })
         } catch (error) {
-            console.error('Error occured while searching SoundCloud', error);
-            return message.reply('An Error occured while searching SoundCloud, check the logs.')
+            console.error('Error occured with SoundCloud-DL', error);
+            return interaction.reply('An Error occured on SoundCloud-DL, check the logs.')
         }
 
         await interaction.reply(`Title: ${title} Author: ${author}`);
